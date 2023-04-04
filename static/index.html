@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        .header {
+            text-align: center;
+        }
+
+        .header--text {
+            font-size: xxx-large;
+            font-family: ui-monospace;
+        }
+
+        .form-wrapper {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: medium;
+            font-family: ui-monospace;
+        }
+        
+        input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: ui-monospace;
+            font-size: medium;
+        }
+
+        .form {
+            display: grid;  
+            grid-template-columns: 7fr 1fr;
+            grid-column-gap: 16px;
+        }
+    </style>
+    <head>
+        <title>Информация о заказе</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="./index.css" />
+    </head>
+    <body>
+        <div class="header"> 
+            <span class="header--text">Информация о заказе</span>
+        </div>
+        <div class="form-wrapper">
+            <div class="form-margin"></div>
+            <form method="POST" action="order" class="form">
+                <input type="text" name="uid" placeholder="Введите ID" counter maxlength="19" minlength="1" />
+                <input type="submit" value="Найти" />
+            </form>
+            <div class="form-margin"></div>
+        </div>
+
+    </body>
+</html>

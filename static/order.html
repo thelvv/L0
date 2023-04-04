@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+    <html>
+        <style>
+            .header {
+                text-align: center;
+                display: grid;
+                grid-template-columns: auto 1fr;
+            }
+    
+            .header--text {
+                font-size: xxx-large;
+                font-family: ui-monospace;
+            }
+
+            .order-params {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                grid-template-rows: repeat(5, 1fr);
+
+                column-gap: 16px;
+                row-gap: 8px;
+            }
+
+            .form-wrapper {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            font-size: medium;
+            font-family: ui-monospace;
+            }
+
+            .order-param {
+                font-size: medium;
+                font-family: ui-monospace;
+            }
+
+            .back-button {
+            width: fit-content;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: ui-monospace;
+            font-size: medium;
+            }
+
+            .back-button:hover {
+                background-color: #45a049;
+            }
+
+            .status-string {
+                margin-bottom: 16px;
+                font-weight: 600;
+            }
+    
+        </style>
+
+        <head>
+            <title>Информация о заказе</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" type="text/css" href="index.css" />
+        </head>
+        <body>
+            <div class="header"> 
+                <button class="back-button" onclick="location.href='/'"> Назад </button>
+                <span class="header--text">Информация о заказе</span>
+            </div>
+
+            <div class="form-wrapper">
+                <div class="form-margin"></div>
+                <div>
+                    <div class="order-param status-string"> {{ if .Order_uid}} Номер заказа: {{.Order_uid}} {{ else }}
+                        Ошибка! Заказа с данным номером не существует{{ end }} </div>
+                    <div class="order-params">
+                        <div class="order-param"> Трек-номер: </div>
+                        <div class="order-param"> {{ if .Track_number}} {{.Track_number}} {{ end }} </div>
+                        <div class="order-param"> Количество товаров: </div>
+                        <div class="order-param"> {{ if .Payment.Goods_total}} {{.Payment.Goods_total}} {{ end }} </div>
+                        <div class="order-param"> Банк: </div>
+                        <div class="order-param"> {{ if .Payment.Bank}} {{.Payment.Bank}} {{ end }} </div>
+                        <div class="order-param"> Стоимость доставки: </div>
+                        <div class="order-param"> {{ if .Payment.Delivery_cost}} {{.Payment.Delivery_cost}} {{ end }} </div>
+                        <div class="order-param"> Итоговая стоимость: </div>
+                        <div class="order-param"> {{ if .Payment.Amount}} {{.Payment.Amount}} {{ end }} </div>
+                        <div class="order-param"> Служба доставки: </div>
+                        <div class="order-param"> {{ if .Delivery_service}} {{.Delivery_service}} {{ end }} </div>
+                        <div class="order-param"> Дата создания: </div>
+                        <div class="order-param"> {{ if .Date_created}} {{.Date_created}} {{ end }} </div>  
+                    </div>
+                </div>
+                <div class="form-margin"></div>
+            </div>
+        </body>
+    </html>
